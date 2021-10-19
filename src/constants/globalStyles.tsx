@@ -97,6 +97,25 @@ export const FONT = StyleSheet.create({
         fontWeight: "600",
         fontStyle: 'normal',
         textTransform: 'none',
+        fontFamily: 'Manrope-Regular'
+    },
+    normal_500: {
+        fontWeight: "600",
+        fontStyle: 'normal',
+        textTransform: 'none',
+        fontFamily: 'Manrope-Regular'
+    },
+    normal_300: {
+        fontWeight: "600",
+        fontStyle: 'normal',
+        textTransform: 'none',
+        fontFamily: 'Manrope-Regular'
+    },
+    bold: {
+        fontWeight: "bold",
+        fontStyle: 'normal',
+        textTransform: 'none',
+        fontFamily: 'Manrope-Bold'
     },
 });
 

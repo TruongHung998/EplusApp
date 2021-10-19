@@ -1,4 +1,4 @@
-export const PRIMARY_COLOR = '#FB0108';
+export const PRIMARY_COLOR = '#0957DE';
 export const COLOR_RED = '#E5625C';
 export const COLOR_ORANGE = '#DF8C26'
 export const COLOR_GREEN = '#65A06B'

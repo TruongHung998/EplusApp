@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 import {popAction} from "../../utilities/navigationAction";
 import VectorIcon from "../elements/vectorIcon";
 import {ICON_NAME} from "../../constants/iconName";
+import {FONT} from "../../constants/globalStyles";
 
 const BaseHeaderNavigator = memo((props) => {
     const {
@@ -30,26 +31,27 @@ const BaseHeaderNavigator = memo((props) => {
                     <View style={{width: 35, height: 35, borderRadius: 40, backgroundColor: 'gray', marginRight: 5}}/>
                     <View>
                         <Text style={{
+                            ...FONT.normal,
                             color: color,
-                            fontSize: 14,
+                            fontSize: 12,
                             lineHeight: 20,
                             fontWeight: '500'
                         }}>Chào buổi sáng</Text>
                         <Text style={[{
+                            ...FONT.bold,
                             color: color,
-                            fontSize: 14,
+                            fontSize: 12,
                             lineHeight: 20,
-                            fontWeight: Platform.select({
-                                ios: "800",
-                                android: "bold"
-                            }),
                             textAlign: 'center'
                         }]}>{title || ''}</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={{marginRight: 5, color: 'white'}}>
-                        HCM
+                    <Text style={{
+                        ...FONT.normal,
+                        marginRight: 5, color: 'white', fontSize: 11
+                    }}>
+                        TP.HCM
                     </Text>
                     <TouchableOpacity
                         onPress={_onPressBack}

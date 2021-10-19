@@ -1,11 +1,8 @@
 import React, {memo} from "react";
-import {LayoutAnimation, PixelRatio, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {LayoutAnimation, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import _const from '../../constants/common'
 import VectorIcon from "./vectorIcon";
-import {BottomBarHeight} from "../../constants/dimension";
-import utils from '../../utilities/utils'
-import {LAYOUT, FONT} from "../../constants/globalStyles";
-import {hexAToRGBA} from "../../utilities/helper";
+import {FONT} from "../../constants/globalStyles";
 
 interface BottomTabBarProps {
     state: any,
