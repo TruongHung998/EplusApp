@@ -8,11 +8,11 @@ const RootNavigation = memo((props) => {
 
     return (
         <StackNavigator.Navigator>
-            {/*<StackNavigator.Screen*/}
-            {/*    name={ROUTE_SPLASH}*/}
-            {/*    component={SplashScreen}*/}
-            {/*    options={{headerShown: false}}*/}
-            {/*/>*/}
+            <StackNavigator.Screen
+                name={ROUTE_SPLASH}
+                component={SplashScreen}
+                options={{headerShown: false}}
+            />
             <StackNavigator.Screen
                 name={NAVIGATION_MAIN_APP}
                 component={MainAppNavigation}

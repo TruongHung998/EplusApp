@@ -23,4 +23,12 @@ export const ICON_NAME = {
         isImage: true,
         icon_name: require("../assets/images/icon/heart_circle_icon.png")
     },
+    BELL_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/bell_icon.png")
+    },
+    LOCATION_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/location_icon.png")
+    },
 }
