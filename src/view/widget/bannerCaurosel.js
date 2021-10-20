@@ -47,7 +47,7 @@ export const CauroselRender = memo(({
         setActiveSlide(_index)
     }, [activeSlide])
     return <View {...restProps} style={{
-        width: _const.WIDTH_SCREEN * 0.85,
+        width: _const.WIDTH_SCREEN * 0.9,
         alignSelf: 'center',
         overflow: 'hidden',
         borderRadius: 10,

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     container: {
         paddingHorizontal: 10,
-        width: _const.WIDTH_SCREEN * 0.85,
+        width: _const.WIDTH_SCREEN * 0.9,
         backgroundColor: COLOR_PAPER,
         height: 40,
         alignSelf: 'center',

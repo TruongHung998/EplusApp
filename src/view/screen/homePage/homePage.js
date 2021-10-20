@@ -5,6 +5,8 @@ import _const from "../../../constants/common";
 import BaseHeaderNavigator from "../../widget/baseHeaderNavigator";
 import {CauroselRender} from "../../widget/bannerCaurosel";
 import ButtonNotify from "./buttonNotify";
+import Group3Button from "./group3Button";
+import {FONT} from "../../../constants/globalStyles";
 
 const HomePage = memo(() => {
     return <SafeAreaView style={styles.container}>
@@ -16,6 +18,7 @@ const HomePage = memo(() => {
         <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
             <CauroselRender/>
             <ButtonNotify/>
+            <Group3Button/>
             <View style={{height: 500}}/>
         </ScrollView>
     </SafeAreaView>
