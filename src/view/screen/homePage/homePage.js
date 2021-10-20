@@ -8,6 +8,8 @@ import ButtonNotify from "./buttonNotify";
 import Group3Button from "./group3Button";
 import {FONT} from "../../../constants/globalStyles";
 import HomeDashboard from "./homeDashboard";
+import HomeBanner from "../../widget/homeBanner";
+import HomeNews from "./homeNews";
 
 const HomePage = memo(() => {
     return <SafeAreaView style={styles.container}>
@@ -21,7 +23,9 @@ const HomePage = memo(() => {
             <ButtonNotify/>
             <Group3Button/>
             <HomeDashboard/>
-            <View style={{height: 500}}/>
+            <HomeBanner/>
+            <HomeNews/>
+            <View style={{height: 100}}/>
         </ScrollView>
     </SafeAreaView>
 })
