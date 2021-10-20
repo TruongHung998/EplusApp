@@ -7,6 +7,7 @@ import {CauroselRender} from "../../widget/bannerCaurosel";
 import ButtonNotify from "./buttonNotify";
 import Group3Button from "./group3Button";
 import {FONT} from "../../../constants/globalStyles";
+import HomeDashboard from "./homeDashboard";
 
 const HomePage = memo(() => {
     return <SafeAreaView style={styles.container}>
@@ -19,6 +20,7 @@ const HomePage = memo(() => {
             <CauroselRender/>
             <ButtonNotify/>
             <Group3Button/>
+            <HomeDashboard/>
             <View style={{height: 500}}/>
         </ScrollView>
     </SafeAreaView>

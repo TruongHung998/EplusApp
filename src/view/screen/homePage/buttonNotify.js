@@ -8,7 +8,7 @@ import TouchOpacityButton from "../../widget/TouchOpacityButton";
 import {COLOR_PAPER, PRIMARY_COLOR} from "../../../constants/color";
 import VectorIcon from "../../elements/vectorIcon";
 import {ICON_NAME} from "../../../constants/iconName";
-import {FONT} from "../../../constants/globalStyles";
+import {FONT, LAYOUT} from "../../../constants/globalStyles";
 
 const ButtonNotify = memo(() => {
     return <TouchOpacityButton style={styles.container}>

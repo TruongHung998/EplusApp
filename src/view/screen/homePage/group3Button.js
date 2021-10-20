@@ -8,12 +8,12 @@ import TouchOpacityButton from "../../widget/TouchOpacityButton";
 import {COLOR_PAPER, PRIMARY_COLOR} from "../../../constants/color";
 import VectorIcon from "../../elements/vectorIcon";
 import {ICON_NAME} from "../../../constants/iconName";
-import {FONT} from "../../../constants/globalStyles";
+import {FONT, LAYOUT} from "../../../constants/globalStyles";
 
 const Group3Button = memo(() => {
     return <View style={styles.container}>
         <View style={styles.container2}>
-            <VectorIcon name={ICON_NAME.CALENDAR_ICON}/>
+            <VectorIcon name={ICON_NAME.STOPWATCH_ICON}/>
             <Text>
                 <Text style={[{...FONT.bold, color: PRIMARY_COLOR}]}>3</Text>
                 <Text style={styles.text1}> theo dõi</Text>
@@ -22,7 +22,7 @@ const Group3Button = memo(() => {
         </View>
         <View style={styles.line}/>
         <View style={styles.container2}>
-            <VectorIcon name={ICON_NAME.CALENDAR_ICON}/>
+            <VectorIcon name={ICON_NAME.CART_ICON}/>
             <Text>
                 <Text style={[{...FONT.bold, color: PRIMARY_COLOR}]}>3</Text>
                 <Text style={styles.text1}> sản phẩm</Text>
@@ -31,7 +31,7 @@ const Group3Button = memo(() => {
         </View>
         <View style={styles.line}/>
         <View style={styles.container2}>
-            <VectorIcon name={ICON_NAME.CALENDAR_ICON}/>
+            <VectorIcon name={ICON_NAME.LOADER_ICON}/>
             <Text>
                 <Text style={[{...FONT.bold, color: PRIMARY_COLOR}]}>3</Text>
                 <Text style={styles.text1}> đặt hẹn</Text>

@@ -35,4 +35,44 @@ export const ICON_NAME = {
         isImage: true,
         icon_name: require("../assets/images/icon/arrow_back_icon.png")
     },
+    STOPWATCH_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/stopwatch_icon.png")
+    },
+    CART_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/cart_icon.png")
+    },
+    LOADER_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/loader_icon.png")
+    },
+    HEALTH_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/health_icon.png")
+    },
+    VIRUS_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/virus_icon.png")
+    },
+    TEST_TUBE_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/test_tube_icon.png")
+    },
+    STETHOSCOPE_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/stethoscope_icon.png")
+    },
+    SYRINGE_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/syringe_icon.png")
+    },
+    GRID_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/grid_icon.png")
+    },
+    BOOKMARK_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/bookmark_icon.png")
+    },
 }
