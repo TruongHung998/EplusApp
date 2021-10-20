@@ -2,7 +2,7 @@ import React, {memo} from "react";
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
 import HiddenBackground from "../../widget/hiddenBackground";
 import _const from "../../../constants/common";
-import BaseHeaderNavigator from "../../widget/baseHeaderNavigator";
+import BaseHeaderNavigator from "../../widget/header/baseHeaderNavigator";
 import {CauroselRender} from "../../widget/bannerCaurosel";
 import TouchOpacityButton from "../../widget/TouchOpacityButton";
 import {COLOR_PAPER, PRIMARY_COLOR} from "../../../constants/color";

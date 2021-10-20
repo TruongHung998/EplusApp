@@ -14,6 +14,8 @@ import _const from "../../../constants/common"
 import {FONT, LAYOUT} from "../../../constants/globalStyles";
 import TouchOpacityButton from "../../widget/TouchOpacityButton";
 import {PRIMARY_COLOR} from "../../../constants/color";
+import {resetStackAction} from "../../../utilities/navigationAction";
+import {NAVIGATION_MAIN_APP} from "../../../navigators/routeName";
 
 export const LoginRoute = memo(() => {
     return <TouchableWithoutFeedback style={styles.container} onPress={() => {
@@ -24,7 +26,7 @@ export const LoginRoute = memo(() => {
             <Image source={require("../../../assets/background/splashIcon.png")} style={{
                 width: _const.WIDTH_SCREEN,
                 height: _const.HEIGHT_SCREEN * 0.25,
-                marginBottom: _const.HEIGHT_SCREEN * 0.05,
+                marginTop: 15
             }} resizeMode={"contain"}/>
             <View style={styles.form}>
                 <TouchableWithoutFeedback onPress={() => {
@@ -37,7 +39,9 @@ export const LoginRoute = memo(() => {
                             <Text style={styles.label}>{"Mật khẩu"}</Text>
                             <TextInput style={styles.text_input}/>
                         </View>
-                        <TouchOpacityButton style={styles.submit_button}>
+                        <TouchOpacityButton style={styles.submit_button} onPress={() => {
+                            resetStackAction(NAVIGATION_MAIN_APP)
+                        }}>
                             <Text style={{...FONT.normal, color: 'white'}}>Đăng nhập</Text>
                         </TouchOpacityButton>
                     </View>

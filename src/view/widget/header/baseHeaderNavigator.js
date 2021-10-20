@@ -1,10 +1,10 @@
 import React, {memo, useCallback} from 'react'
 import {SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Platform} from 'react-native'
 import {useDispatch} from 'react-redux'
-import {popAction} from "../../utilities/navigationAction";
-import VectorIcon from "../elements/vectorIcon";
-import {ICON_NAME} from "../../constants/iconName";
-import {FONT} from "../../constants/globalStyles";
+import {popAction} from "../../../utilities/navigationAction";
+import VectorIcon from "../../elements/vectorIcon";
+import {ICON_NAME} from "../../../constants/iconName";
+import {FONT} from "../../../constants/globalStyles";
 
 const BaseHeaderNavigator = memo((props) => {
     const {

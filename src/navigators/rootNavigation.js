@@ -10,13 +10,13 @@ const RootNavigation = memo((props) => {
     return (
         <StackNavigator.Navigator>
             <StackNavigator.Screen
-                name={ROUTE_LOGIN}
-                component={LoginRoute}
+                name={ROUTE_SPLASH}
+                component={SplashScreen}
                 options={{headerShown: false}}
             />
             <StackNavigator.Screen
-                name={ROUTE_SPLASH}
-                component={SplashScreen}
+                name={ROUTE_LOGIN}
+                component={LoginRoute}
                 options={{headerShown: false}}
             />
             <StackNavigator.Screen
