@@ -3,7 +3,7 @@ import {StackNavigator} from "./index";
 import {ROUTE_HOME} from "./routeName";
 
 import {LAYOUT} from "../constants/globalStyles";
-import HomePage from "../view/screen/homePage";
+import HomePage from "../view/screen/homePage/homePage";
 
 export default memo(() => {
     return (

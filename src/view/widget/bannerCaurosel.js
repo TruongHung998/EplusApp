@@ -36,7 +36,7 @@ export const CauroselRender = memo(({
     const renderImage = useCallback((item, index) => {
         const _data = item?.item || {}
         return (
-            <TouchOpacityButton key={_data.id + ''} onPress={onPressImage} data={_data}>
+            <TouchOpacityButton key={_data.id + ''} onPress={onPressImage} data={_data} activeOpacity={1}>
                 <LazyFastImage source={{uri: _data?.url}}
                                style={[styles.image, {marginBottom: data.length === 1 ? 20 : 0}]} resizeMode={"cover"}/>
             </TouchOpacityButton>
@@ -46,7 +46,14 @@ export const CauroselRender = memo(({
         LayoutAnimation.easeInEaseOut()
         setActiveSlide(_index)
     }, [activeSlide])
-    return <View {...restProps}>
+    return <View {...restProps} style={{
+        width: _const.WIDTH_SCREEN * 0.85,
+        alignSelf: 'center',
+        overflow: 'hidden',
+        borderRadius: 10,
+        alignItems: 'center',
+        marginTop: 15
+    }}>
         <Carousel
             // loop={true}
             data={data}
@@ -62,27 +69,28 @@ export const CauroselRender = memo(({
             swipeThreshold={10}
             layoutCardOffset={9}
         />
-        <Pagination
-            containerStyle={styles.container_padding}
-            dotsLength={data.length}
-            activeDotIndex={activeSlide}
-            dotStyle={{
-                width: 25,
-                height: 3,
-                borderRadius: 10,
-                marginHorizontal: 0,
-                backgroundColor: theme,
-            }}
-            inactiveDotStyle={{
-                width: 20,
-                height: 2,
-                borderRadius: 10,
-                backgroundColor: 'gray',
-            }}
-            dotContainerStyle={{marginHorizontal: 3}}
-            inactiveDotOpacity={1.0}
-            inactiveDotScale={0.8}
-        />
+        <View style={styles.container_padding}>
+            <Pagination
+                dotsLength={data.length}
+                activeDotIndex={activeSlide}
+                dotStyle={{
+                    width: 25,
+                    height: 3,
+                    borderRadius: 10,
+                    marginHorizontal: 0,
+                    backgroundColor: theme,
+                }}
+                inactiveDotStyle={{
+                    width: 20,
+                    height: 2,
+                    borderRadius: 10,
+                    backgroundColor: 'gray',
+                }}
+                dotContainerStyle={{marginHorizontal: 3}}
+                inactiveDotOpacity={1.0}
+                inactiveDotScale={0.8}
+            />
+        </View>
     </View>
 })
 
@@ -90,7 +98,7 @@ const styles = StyleSheet.create({
     container_padding: {
         position: 'absolute',
         bottom: -20,
-        left: "38%"
+        left: "30%"
     },
     image: {
         width: _const.WIDTH_SCREEN * 0.9,

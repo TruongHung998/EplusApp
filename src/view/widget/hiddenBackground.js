@@ -1,6 +1,7 @@
 import React, {memo, useCallback} from 'react'
 import _const from '../../constants/common'
-import {Image} from 'react-native'
+import {Image, View} from 'react-native'
+import {PRIMARY_COLOR} from "../../constants/color";
 
 const HiddenBackground = memo((props) => {
 
@@ -15,25 +16,21 @@ const HiddenBackground = memo((props) => {
         containerStyle
     } = props
 
-    const _onLayoutView = useCallback((_event) => {
-        var { height } = _event.nativeEvent.layout;
-        onLayout && onLayout(height)
-    }, [])
-
     return (
-        <Image
-            onLayout={(event) => {
-                _onLayoutView(event)
-            }}
-            resizeMode={mode}
-            style={[{ position: 'absolute', top: top, left: left, width: width, height: height }, containerStyle]}
-            source={resource}
+        <View
+            style={[{
+                position: 'absolute',
+                top: top,
+                left: left,
+                width: width,
+                height: height,
+                backgroundColor: PRIMARY_COLOR
+            }, containerStyle]}
         />
     )
 })
 
-HiddenBackground.propTypes = {
-}
+HiddenBackground.propTypes = {}
 
 HiddenBackground.defaultProps = {
     mode: 'cover',

@@ -31,4 +31,8 @@ export const ICON_NAME = {
         isImage: true,
         icon_name: require("../assets/images/icon/location_icon.png")
     },
+    ARROW_BACK_ICON: {
+        isImage: true,
+        icon_name: require("../assets/images/icon/arrow_back_icon.png")
+    },
 }
