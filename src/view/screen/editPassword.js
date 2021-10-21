@@ -31,7 +31,6 @@ export const EditPasswordRoute = memo(() => {
     const setLoading = useSetLoading()
     const useAlert = useShowAlert()
     const token = useSelector(selectAccessToken)
-    console.log(token, 'hung')
 
     const onChangeInput = useCallback((text, slug) => {
         switch (slug) {

@@ -14,6 +14,7 @@ import TabExample2Navigation from "./tabExample2Navigation";
 
 import {SCREENS} from "../constants/screen";
 import CalendarRoute from "../view/screen/CalendarPage/CalendarRoute";
+import PersonalPage from "../view/screen/Personal/PersonalPage";
 
 
 const BottomTabNavigation = memo(() => {
@@ -72,7 +73,7 @@ const BottomTabNavigation = memo(() => {
             />
             <StackNavigator.Screen
                 name={NAVIGATION_TAB_PERSONAL}
-                component={TabExample2Navigation}
+                component={PersonalPage}
                 options={({route}) => {
                     return {
                         tabBarVisible: getTabBarVisibility(route),

@@ -22,7 +22,7 @@ export const LoadingOverlay = forwardRef((props, ref: Ref<LoadingOverlayRef>): J
             Animated.timing(
                 opacity, {
                     toValue: 0,
-                    duration: 2000,
+                    duration: 1500,
                     easing: Easing.linear,
                     useNativeDriver: true
                 })

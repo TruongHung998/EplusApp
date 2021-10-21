@@ -34,7 +34,6 @@ export const refreshTokenAction = (refreshToken, resolve, reject) => async (disp
     try {
         const result = await refreshTokenApi({refreshToken: refreshToken})
         if (result) {
-            console.log(result, 'hung')
             dispatch(receiveNewToken(result))
             resolve && resolve(result?.accessToken || "")
         } else reject && reject(result)

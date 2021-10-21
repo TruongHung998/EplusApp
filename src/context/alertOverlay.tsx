@@ -104,7 +104,8 @@ const AlertOverlay = forwardRef(({
                                 <Text style={{
                                     fontSize: 16,
                                     marginTop: 20,
-                                    ...FONT.normal
+                                    ...FONT.normal,
+                                    textAlign: 'center'
                                 }}>{message}</Text>
                                 <View style={{
                                     flexDirection: buttons && buttons.length > 1 ? 'row' : 'column',
