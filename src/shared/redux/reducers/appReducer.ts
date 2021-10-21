@@ -36,31 +36,31 @@ export default (state = initialState, action: any) => {
 };
 
 
-//Transform to JSON to save in localstorage
-export const authStateToJs = (state: AppStateType): any => {
-    const {
-        id,
-        name,
-        Form,
-    } = state
-    return {
-        id,
-        name,
-        Form,
-    }
-}
-
-//get Infomation from localstorage
-export const authStateFromJs = (state: AppStateType): any => {
-    const {
-        id,
-        name,
-        Form,
-    } = state
-    return {
-        ...initialState,
-        id,
-        name,
-        Form,
-    }
-}
+// //Transform to JSON to save in localstorage
+// export const authStateToJs = (state: AppStateType): any => {
+//     const {
+//         id,
+//         name,
+//         Form,
+//     } = state
+//     return {
+//         id,
+//         name,
+//         Form,
+//     }
+// }
+//
+// //get Infomation from localstorage
+// export const authStateFromJs = (state: AppStateType): any => {
+//     const {
+//         id,
+//         name,
+//         Form,
+//     } = state
+//     return {
+//         ...initialState,
+//         id,
+//         name,
+//         Form,
+//     }
+// }

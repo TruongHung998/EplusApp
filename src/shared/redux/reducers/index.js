@@ -7,6 +7,7 @@ import AndroidAsyncStorage from 'redux-persist-filesystem-storage';
 import {createMigrate, persistCombineReducers} from 'redux-persist'
 
 import app from './appReducer';
+import auth from './authReducer'
 
 import {Platform} from "react-native";
 import reduxTransformer from "../store/reduxTransformer";
@@ -32,7 +33,7 @@ const config = {
         android: AndroidAsyncStorage
     }),
     whitelist: [
-        'app',
+        'auth',
     ],
     migrate: createMigrate(migrations, {debug: false}),
 
@@ -40,5 +41,6 @@ const config = {
 
 
 export const combinedReducer = persistCombineReducers(config, {
-    app
+    app,
+    auth
 })

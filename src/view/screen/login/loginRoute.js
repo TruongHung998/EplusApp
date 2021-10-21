@@ -13,14 +13,19 @@ import _const from "../../../constants/common"
 import {FONT, LAYOUT} from "../../../constants/globalStyles";
 import TouchOpacityButton from "../../widget/TouchOpacityButton";
 import {PRIMARY_COLOR} from "../../../constants/color";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {loginAction} from "../../../shared/redux/actions/authAction";
 import {useSetLoading} from "../../../context/appContext";
+import WebView from "react-native-webview";
+import {selectAccessToken} from "../../../shared/redux/selector/authSelector";
 
 export const LoginRoute = memo(() => {
-    const [formInput, setFormInput] = useState({username: "", password: ""})
+    const [formInput, setFormInput] = useState({username: "gia", password: "866081"})
+    const [error, setError] = useState('')
     const dispatch = useDispatch()
     const setLoading = useSetLoading()
+    const info = useSelector(selectAccessToken)
+    console.log(info, 'info')
 
     const onChangeInput = useCallback((text, slug) => {
         if (slug === "user")
@@ -36,7 +41,8 @@ export const LoginRoute = memo(() => {
                 password: formInput.password
             }, () => {
                 setLoading(false)
-            }, () => {
+            }, (error) => {
+                setError('Sai tên đăng nhập hoặc mật khẩu')
                 setLoading(false)
             }))
         }
@@ -52,6 +58,7 @@ export const LoginRoute = memo(() => {
                 height: _const.HEIGHT_SCREEN * 0.25,
                 marginTop: 15
             }} resizeMode={"contain"}/>
+            {/*<WebView source={{uri: 'https://app.e-plus.vn/login'}} style={{width: _const.WIDTH_SCREEN, height: 500}}/>*/}
             <View style={styles.form}>
                 <TouchableWithoutFeedback onPress={() => {
                     Keyboard.dismiss()
@@ -64,14 +71,14 @@ export const LoginRoute = memo(() => {
                             <TextInput style={styles.text_input} secureTextEntry={true}
                                        onChangeText={(text) => onChangeInput(text, 'pass')}/>
                         </View>
-                        {/*<Text style={{*/}
-                        {/*    ...FONT.normal,*/}
-                        {/*    fontSize: 12,*/}
-                        {/*    color: 'red',*/}
-                        {/*    textAlign: 'center',*/}
-                        {/*    marginTop: 10,*/}
-                        {/*    marginBottom: -10*/}
-                        {/*}}>{"Error"}</Text>*/}
+                        {error !== '' && <Text style={{
+                            ...FONT.normal,
+                            fontSize: 12,
+                            color: 'red',
+                            textAlign: 'center',
+                            marginTop: 10,
+                            marginBottom: -10
+                        }}>{error}</Text>}
                         <TouchOpacityButton style={styles.submit_button} onPress={_onLogin}>
                             <Text style={{...FONT.normal, color: 'white'}}>Đăng nhập</Text>
                         </TouchOpacityButton>

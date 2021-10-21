@@ -34,6 +34,7 @@
     "react-native-skeleton-placeholder": "^5.0.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-version-number": "^0.3.6",
+    "react-native-webview": "^11.14.1",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.4",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",

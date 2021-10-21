@@ -5,6 +5,14 @@ import store from '../shared/redux/store/index'
 
 //Handle Requeset Api, Where to return results
 
+const internalSuccessHandler = (response, resolve, reject) => {
+    const {status_code} = response;
+    if (status_code != null && status_code !== 200) {
+        reject(response);
+    } else
+        resolve(response);
+};
+
 export const requestApi = (api, header = {}, url, body) => {
     return new Promise((resolve, reject) => {
         const state = store.getState();
