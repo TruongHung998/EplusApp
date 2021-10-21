@@ -1,4 +1,4 @@
-import {LOGIN_INFOMATION} from "../actions/authAction";
+import {LOGIN_INFOMATION, USER_INFOMATION} from "../actions/authAction";
 
 
 const initialState = {
@@ -26,10 +26,27 @@ const receiveLoginInfo = (state, action) => {
     return state
 }
 
+const receiveUserInfo = (state, action) => {
+    const _action = action
+    const data = _action.data
+    if (data) {
+        state = {
+            ...state,
+            userInfomation: {
+                ...state.userInfomation,
+                name: data?.userInfo?.name || "",
+            }
+        }
+    }
+    return state
+}
+
 export default (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_INFOMATION:
             return receiveLoginInfo(state, action)
+        case USER_INFOMATION:
+            return receiveUserInfo(state, action)
         default:
             return state;
     }

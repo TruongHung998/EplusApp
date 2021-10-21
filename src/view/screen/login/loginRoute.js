@@ -18,6 +18,8 @@ import {loginAction} from "../../../shared/redux/actions/authAction";
 import {useSetLoading} from "../../../context/appContext";
 import WebView from "react-native-webview";
 import {selectAccessToken} from "../../../shared/redux/selector/authSelector";
+import {resetStackAction} from "../../../utilities/navigationAction";
+import {NAVIGATION_MAIN_APP} from "../../../navigators/routeName";
 
 export const LoginRoute = memo(() => {
     const [formInput, setFormInput] = useState({username: "gia", password: "866081"})
@@ -40,6 +42,7 @@ export const LoginRoute = memo(() => {
                 password: formInput.password
             }, () => {
                 setLoading(false)
+                resetStackAction(NAVIGATION_MAIN_APP)
             }, (error) => {
                 setError('Sai tên đăng nhập hoặc mật khẩu')
                 setLoading(false)

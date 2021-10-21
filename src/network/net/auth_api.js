@@ -13,3 +13,7 @@ export const loginApi = (body) => {
 export const refreshTokenApi = (body) => {
     return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/refreshToken`, body)
 }
+
+export const requestUserInfo = () => {
+    return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/user`, null)
+}

@@ -10,21 +10,25 @@ import {FONT} from "../../../constants/globalStyles";
 import HomeDashboard from "./homeDashboard";
 import HomeBanner from "../../widget/homeBanner";
 import HomeNews from "./homeNews";
+import {useSelector} from "react-redux";
+import {selectUserName} from "../../../shared/redux/selector/authSelector";
 
 const HomePage = memo(() => {
+    const name = useSelector(selectUserName)
+
     return <SafeAreaView style={styles.container}>
         <HiddenBackground mode={'stretch'}
                           height={_const.HEIGHT_SCREEN * 0.3}
         />
         <BaseHeaderNavigator color={'white'}
-                             title={'Ánh Tuyết'}/>
+                             title={name}/>
         <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
-            <CauroselRender/>
-            <ButtonNotify/>
-            <Group3Button/>
-            <HomeDashboard/>
-            <HomeBanner/>
-            <HomeNews/>
+            {/*<CauroselRender/>*/}
+            {/*<ButtonNotify/>*/}
+            {/*<Group3Button/>*/}
+            {/*<HomeDashboard/>*/}
+            {/*<HomeBanner/>*/}
+            {/*<HomeNews/>*/}
             <View style={{height: 100}}/>
         </ScrollView>
     </SafeAreaView>
