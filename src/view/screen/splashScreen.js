@@ -5,10 +5,13 @@ import {resetStackAction} from "../../utilities/navigationAction";
 import MainAppNavigation from "../../navigators/mainAppNavigation";
 import {NAVIGATION_MAIN_APP, ROUTE_LOGIN} from "../../navigators/routeName";
 import {FONT} from "../../constants/globalStyles";
+import {useSelector} from "react-redux";
+import {selectUserName} from "../../shared/redux/selector/authSelector";
 
 const SplashScreen = memo(() => {
     const [showIconEplus, setIconEplus] = useState(false)
     const [showIconBrand, setIconBrand] = useState(false)
+    const info = useSelector(selectUserName)
 
     useEffect(() => {
         setTimeout(() => {
@@ -20,9 +23,11 @@ const SplashScreen = memo(() => {
             setIconBrand(true)
         }, 2000)
         setTimeout(() => {
-            resetStackAction(ROUTE_LOGIN)
+            if (info === '')
+                resetStackAction(ROUTE_LOGIN)
+            else resetStackAction(NAVIGATION_MAIN_APP)
         }, 2500)
-    }, [])
+    }, [info])
 
     return <SafeAreaView style={styles.container}>
         <ImageBackground source={require("../../assets/background/SplashBackground.png")} resizeMode="cover"

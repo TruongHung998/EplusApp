@@ -14,5 +14,8 @@ export const ROUTE_LOGIN = 'ROUTE_LOGIN';
 
 //
 export const ROUTE_HOME = 'ROUTE_HOME';
+export const ROUTE_EDIT_PASSWORD = 'ROUTE_EDIT_PASSWORD';
+
+//
 export const ROUTE_EXAMPLE1 = 'ROUTE_EXAMPLE1';
 export const ROUTE_EXAMPLE2 = 'ROUTE_EXAMPLE2';

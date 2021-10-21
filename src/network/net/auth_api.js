@@ -17,3 +17,7 @@ export const refreshTokenApi = (body) => {
 export const requestUserInfo = () => {
     return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/user`, null)
 }
+
+export const changePasswordApi = (body) => {
+    return requestApi(NetworkUtils.post, null, `${DOMAIN}user/updatePassword`, body)
+}

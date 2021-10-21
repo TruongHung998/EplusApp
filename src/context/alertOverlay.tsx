@@ -6,6 +6,7 @@ import {NAVIGATION_BAR_PADDING_H, SafeAreaBottom} from "../constants/dimension";
 import {LAYOUT, FONT} from "../constants/globalStyles"
 import TouchOpacityButton from "../view/widget/TouchOpacityButton";
 import Animated from "react-native-reanimated";
+import {PRIMARY_COLOR} from "../constants/color";
 
 export interface AlertOverlayProps {
     visible?: boolean,
@@ -20,7 +21,15 @@ export interface AlertOverlayProps {
 export type AlertOverlayRef = {
     onOpen: () => void
 }
-const AlertOverlay = forwardRef(({visible = false, animationType = 'fade', contentTitle, message = '', buttons = [], dismissTouchOutSide = false, contentView = null}: AlertOverlayProps, ref: Ref<AlertOverlayRef>): JSX.Element => {
+const AlertOverlay = forwardRef(({
+                                     visible = false,
+                                     animationType = 'fade',
+                                     contentTitle,
+                                     message = '',
+                                     buttons = [],
+                                     dismissTouchOutSide = false,
+                                     contentView = null
+                                 }: AlertOverlayProps, ref: Ref<AlertOverlayRef>): JSX.Element => {
     const [isShow, setIsShow] = useState(false)
     const [animation, setAnimation] = useState('fade')
     useImperativeHandle(ref, () => {
@@ -75,15 +84,27 @@ const AlertOverlay = forwardRef(({visible = false, animationType = 'fade', conte
                 <TouchableWithoutFeedback onPress={_onDismiss}>
                     <View style={styles.modal_position}>
                         <View style={styles.modal_view}>
+                            <View style={{
+                                backgroundColor: PRIMARY_COLOR, width: _const.WIDTH_SCREEN * 0.85,
+                                height: _const.HEIGHT_SCREEN * 0.08,
+                                borderTopRightRadius: 10,
+                                borderTopLeftRadius: 10,
+                                paddingTop: 15
+                            }}>
+                                <Text style={{
+                                    fontSize: 20,
+                                    ...FONT.normal,
+                                    color: 'white',
+                                    textAlign: 'center',
+                                }}>{contentTitle}</Text>
+                            </View>
                             {contentView ? contentView : <View style={{
                                 alignItems: "center",
                             }}>
                                 <Text style={{
-                                    fontSize: 20
-                                }}>{contentTitle}</Text>
-                                <Text style={{
                                     fontSize: 16,
-                                    marginTop: 10
+                                    marginTop: 20,
+                                    ...FONT.normal
                                 }}>{message}</Text>
                                 <View style={{
                                     flexDirection: buttons && buttons.length > 1 ? 'row' : 'column',
@@ -116,9 +137,9 @@ const styles = StyleSheet.create({
     modal_view: {
         margin: 20,
         backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        width: _const.WIDTH_SCREEN * 0.9,
+        borderRadius: 10,
+        paddingBottom: 35,
+        width: _const.WIDTH_SCREEN * 0.85,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {

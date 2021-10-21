@@ -47,7 +47,7 @@ export const LoginRoute = memo(() => {
                 setError('Sai tên đăng nhập hoặc mật khẩu')
                 setLoading(false)
             }))
-        } else setError("Tên đăng nhập và mật khẩu")
+        } else setError("Điền đủ thông tin")
     }, [formInput])
 
     return <TouchableWithoutFeedback style={styles.container} onPress={() => {

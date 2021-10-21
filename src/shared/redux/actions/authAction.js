@@ -1,5 +1,5 @@
 import {getApiExample} from "../../../network/net/api_example/apiExample";
-import {loginApi, refreshTokenApi, requestUserInfo} from "../../../network/net/auth_api";
+import {changePasswordApi, loginApi, refreshTokenApi, requestUserInfo} from "../../../network/net/auth_api";
 import {ExampleForm} from "../constants/modalTypes";
 import {AppActionTypes, RECEIVE} from "../actionTypes/appActionTypes";
 
@@ -21,9 +21,21 @@ export const loginAction = (body, resolve, reject) => async (dispatch) => {
     }
 }
 
-export const refreshTokenAction = (refreshToken, resolve, reject) => async (dispatch) => {
+export const changePassAction = (body, resolve, reject) => async (dispatch) => {
     try {
-        const result = await refreshTokenApi(refreshToken)
+        const result = await changePasswordApi(body)
+        if (result) {
+            resolve && resolve(result)
+        } else reject && reject(result)
+    } catch (e) {
+        reject && reject(e)
+    }
+}
+
+export const refreshTokenAction = (refreshToken, resolve, reject) => async (dispatch) => {
+    console.log(refreshToken, 'token')
+    try {
+        const result = await refreshTokenApi({refreshToken: refreshToken})
         if (result) {
             resolve && resolve(result)
         } else reject && reject(result)
