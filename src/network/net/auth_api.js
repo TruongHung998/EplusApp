@@ -9,3 +9,7 @@ const VERSION_API = Utils.getPrefixVersionAPI()
 export const loginApi = (body) => {
     return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/login`, body)
 }
+
+export const refreshTokenApi = (body) => {
+    return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/refreshToken`, body)
+}

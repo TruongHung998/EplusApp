@@ -2,23 +2,29 @@ import Config from '../config'
 import _const from '../constants/common'
 import Utils from "../utilities/utils";
 import store from '../shared/redux/store/index'
+import {selectAccessToken, selectRefreshToken} from "../shared/redux/selector/authSelector";
+import {refreshTokenAction} from "../shared/redux/actions/authAction";
 
 //Handle Requeset Api, Where to return results
 
 const internalSuccessHandler = (response, resolve, reject) => {
-    const {status_code} = response;
-    if (status_code != null && status_code !== 200) {
-        reject(response);
-    } else
+    const {statusCode} = response;
+    if (statusCode === 200 || statusCode === 201) {
         resolve(response);
+    } else
+        reject(response);
 };
 
 export const requestApi = (api, header = {}, url, body) => {
     return new Promise((resolve, reject) => {
         const state = store.getState();
-        header = {
-            ...header,
-            // Authorization: `Bearer ${token}`,
+        const _accessToken = selectAccessToken(state)
+        const _refreshToken = selectRefreshToken(state)
+        if (_accessToken) {
+            header = {
+                ...header,
+                Authorization: `Bearer ${_accessToken}`,
+            }
         }
         api(header, url, body, (status, response) => {
             //console log if hard mode == true
@@ -34,8 +40,33 @@ export const requestApi = (api, header = {}, url, body) => {
             //handle status && response
             switch (status) {
                 case _const.SUCCESS :
-                    if (response?.error) {
-                    } else resolve && resolve(response)
+                    const {statusCode} = response
+                    if (statusCode) {
+                        if (statusCode !== 200 && statusCode !== 201) {
+                            store.dispatch(refreshTokenAction(_refreshToken, (_newAccessToken) => {
+                                header = {
+                                    ...header,
+                                    Authorization: `Bearer ${_newAccessToken}`,
+                                };
+                                api(header, url, body, (status, response) => {
+                                    switch (status) {
+                                        case _const.SUCCESS:
+                                            internalSuccessHandler(response, resolve, reject)
+                                            break;
+                                        default:
+                                            reject(response);
+                                            break;
+                                    }
+                                });
+                            }, (error) => {
+                                reject && reject(error)
+                            }))
+                        } else {
+                            resolve && resolve(response)
+                        }
+                    } else {
+                        resolve && resolve(response)
+                    }
                     break;
                 case _const.FAILURE:
                     reject && reject(response)

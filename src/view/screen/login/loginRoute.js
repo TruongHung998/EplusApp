@@ -25,7 +25,6 @@ export const LoginRoute = memo(() => {
     const dispatch = useDispatch()
     const setLoading = useSetLoading()
     const info = useSelector(selectAccessToken)
-    console.log(info, 'info')
 
     const onChangeInput = useCallback((text, slug) => {
         if (slug === "user")
@@ -45,7 +44,7 @@ export const LoginRoute = memo(() => {
                 setError('Sai tên đăng nhập hoặc mật khẩu')
                 setLoading(false)
             }))
-        }
+        } else setError("Tên đăng nhập và mật khẩu")
     }, [formInput])
 
     return <TouchableWithoutFeedback style={styles.container} onPress={() => {
