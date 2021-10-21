@@ -11,11 +11,13 @@ export const loginApi = (body) => {
 }
 
 export const refreshTokenApi = (body) => {
-    return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/refreshToken`, body)
+    return requestApi(NetworkUtils.post, {}, `${DOMAIN}auth/refreshToken`, body)
 }
 
-export const requestUserInfo = () => {
-    return requestApi(NetworkUtils.post, null, `${DOMAIN}auth/user`, null)
+export const requestUserInfo = (token) => {
+    return requestApi(NetworkUtils.post, {
+        Authorization: `Bearer ${token}`,
+    }, `${DOMAIN}auth/user`, null)
 }
 
 export const changePasswordApi = (body) => {

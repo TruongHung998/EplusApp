@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React, {memo, useCallback, useState} from "react";
 import _const from "../../constants/common"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useSetLoading, useShowAlert} from "../../context/appContext";
 import TouchOpacityButton from "../widget/TouchOpacityButton";
 import {FONT, LAYOUT} from "../../constants/globalStyles";
@@ -18,17 +18,20 @@ import {PRIMARY_COLOR} from "../../constants/color";
 import {changePassAction, loginAction} from "../../shared/redux/actions/authAction";
 import {resetStackAction} from "../../utilities/navigationAction";
 import {NAVIGATION_MAIN_APP} from "../../navigators/routeName";
+import {selectAccessToken} from "../../shared/redux/selector/authSelector";
 
 export const EditPasswordRoute = memo(() => {
     const [formInput, setFormInput] = useState({
-        oldPassword: "866081",
-        newPassword: "866081",
-        reNewPassword: "866081"
+        oldPassword: "localhost",
+        newPassword: "localhost",
+        reNewPassword: "localhost"
     })
     const [error, setError] = useState('')
     const dispatch = useDispatch()
     const setLoading = useSetLoading()
     const useAlert = useShowAlert()
+    const token = useSelector(selectAccessToken)
+    console.log(token, 'hung')
 
     const onChangeInput = useCallback((text, slug) => {
         switch (slug) {
@@ -48,10 +51,11 @@ export const EditPasswordRoute = memo(() => {
         if (formInput.oldPassword && formInput.newPassword && formInput.reNewPassword) {
             setLoading(true)
             // dispatch(loginAction({
-            //     username: "gia",
-            //     password: "866081"
+            //     username: "minhhuy",
+            //     password: "localhost"
             // }, () => {
             //     setLoading(false)
+            //     setError("")
             // }, (error) => {
             //     setError('Sai tên đăng nhập hoặc mật khẩu')
             //     setLoading(false)
@@ -74,7 +78,6 @@ export const EditPasswordRoute = memo(() => {
                     message: "Đổi mật khẩu thành công"
                 })
             }, (error) => {
-                console.log(error, 'password')
                 setError('Sai tên đăng nhập hoặc mật khẩu')
                 setLoading(false)
             }))

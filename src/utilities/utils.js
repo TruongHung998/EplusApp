@@ -7,7 +7,7 @@ export default Object.freeze({
             case 'ALPHA':
                 return 'https://app.e-plus.vn/api/';
             case 'BETA':
-                return 'https://app.e-plus.vn/api/';
+                return 'http://192.168.20.202:3002/';
             case 'PRODUCTION':
                 return 'https://app.e-plus.vn/api/';
             default:

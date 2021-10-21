@@ -9,10 +9,11 @@ import {refreshTokenAction} from "../shared/redux/actions/authAction";
 
 const internalSuccessHandler = (response, resolve, reject) => {
     const {statusCode} = response;
-    if (statusCode === 200 || statusCode === 201) {
-        resolve(response);
+    if (statusCode) {
+        if (statusCode !== 200 && statusCode !== 201)
+            reject(response);
     } else
-        reject(response);
+        resolve(response);
 };
 
 export const requestApi = (api, header = {}, url, body) => {
@@ -20,12 +21,14 @@ export const requestApi = (api, header = {}, url, body) => {
         const state = store.getState();
         const _accessToken = selectAccessToken(state)
         const _refreshToken = selectRefreshToken(state)
-        if (_accessToken) {
-            header = {
-                ...header,
-                Authorization: `Bearer ${_accessToken}`,
+        console.log(_accessToken, 'hung')
+        if (header == null)
+            if (_accessToken) {
+                header = {
+                    ...header,
+                    Authorization: `Bearer ${_accessToken}`,
+                }
             }
-        }
         api(header, url, body, (status, response) => {
             //console log if hard mode == true
             if (Config.SHOW_LOG) {
@@ -49,6 +52,15 @@ export const requestApi = (api, header = {}, url, body) => {
                                     Authorization: `Bearer ${_newAccessToken}`,
                                 };
                                 api(header, url, body, (status, response) => {
+                                    if (Config.SHOW_LOG) {
+                                        console.log('METHOD', api.name);
+                                        console.log('API: ', url);
+                                        console.log('HEADER: ', header);
+                                        console.log('BODY: ', body);
+                                        console.log('BODY: ', JSON.stringify(body));
+                                        console.log('RESPONSE: ', response);
+                                        console.log('STATUS: ', status);
+                                    }
                                     switch (status) {
                                         case _const.SUCCESS:
                                             internalSuccessHandler(response, resolve, reject)
