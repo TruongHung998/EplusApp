@@ -5,11 +5,11 @@ export default Object.freeze({
     getDomain: function () {
         switch (Config.ENV) {
             case 'ALPHA':
-                return 'https://alpha.example.com.vn';
+                return 'https://app.e-plus.vn/api/';
             case 'BETA':
-                return 'https://beta.example.com.vn';
+                return 'https://app.e-plus.vn/api/';
             case 'PRODUCTION':
-                return 'https://example.com.vn';
+                return 'https://app.e-plus.vn/api/';
             default:
                 return '';
         }
@@ -21,7 +21,7 @@ export default Object.freeze({
     isBunnyEarDevice: function () {
         let modelStr = DeviceInfo.getModel();
         if (Platform.OS == 'ios') {
-            return modelStr && (modelStr.includes('X') || modelStr.includes('Max') || modelStr.includes('Pro') || modelStr.includes('11'))
+            return modelStr && (modelStr.includes('X') || modelStr.includes('Max') || modelStr.includes('Pro') || modelStr.includes('11') || modelStr.includes('12') || modelStr.includes('13'))
         }
         return false
     },

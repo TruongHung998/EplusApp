@@ -1,23 +1,47 @@
 import {
-    View,
-    StyleSheet,
-    ImageBackground,
     Image,
-    SafeAreaView,
+    ImageBackground,
+    Keyboard,
+    StyleSheet,
     Text,
     TextInput,
     TouchableWithoutFeedback,
-    Keyboard
+    View
 } from "react-native";
-import React, {memo} from "react";
+import React, {memo, useCallback, useState} from "react";
 import _const from "../../../constants/common"
 import {FONT, LAYOUT} from "../../../constants/globalStyles";
 import TouchOpacityButton from "../../widget/TouchOpacityButton";
 import {PRIMARY_COLOR} from "../../../constants/color";
-import {resetStackAction} from "../../../utilities/navigationAction";
-import {NAVIGATION_MAIN_APP} from "../../../navigators/routeName";
+import {useDispatch} from "react-redux";
+import {loginAction} from "../../../shared/redux/actions/authAction";
+import {useSetLoading} from "../../../context/appContext";
 
 export const LoginRoute = memo(() => {
+    const [formInput, setFormInput] = useState({username: "", password: ""})
+    const dispatch = useDispatch()
+    const setLoading = useSetLoading()
+
+    const onChangeInput = useCallback((text, slug) => {
+        if (slug === "user")
+            setFormInput({...formInput, username: text})
+        else setFormInput({...formInput, password: text})
+    }, [formInput])
+
+    const _onLogin = useCallback(async () => {
+        if (formInput.username && formInput.password) {
+            setLoading(true)
+            dispatch(loginAction({
+                username: formInput.username,
+                password: formInput.password
+            }, () => {
+                setLoading(false)
+            }, () => {
+                setLoading(false)
+            }))
+        }
+    }, [formInput])
+
     return <TouchableWithoutFeedback style={styles.container} onPress={() => {
         Keyboard.dismiss()
     }}>
@@ -34,14 +58,21 @@ export const LoginRoute = memo(() => {
                 }}>
                     <View>
                         <Text style={styles.label}>{"Tên đăng nhập"}</Text>
-                        <TextInput style={styles.text_input}/>
+                        <TextInput style={styles.text_input} onChangeText={(text) => onChangeInput(text, 'user')}/>
                         <View style={{marginTop: 15}}>
                             <Text style={styles.label}>{"Mật khẩu"}</Text>
-                            <TextInput style={styles.text_input}/>
+                            <TextInput style={styles.text_input} secureTextEntry={true}
+                                       onChangeText={(text) => onChangeInput(text, 'pass')}/>
                         </View>
-                        <TouchOpacityButton style={styles.submit_button} onPress={() => {
-                            resetStackAction(NAVIGATION_MAIN_APP)
-                        }}>
+                        {/*<Text style={{*/}
+                        {/*    ...FONT.normal,*/}
+                        {/*    fontSize: 12,*/}
+                        {/*    color: 'red',*/}
+                        {/*    textAlign: 'center',*/}
+                        {/*    marginTop: 10,*/}
+                        {/*    marginBottom: -10*/}
+                        {/*}}>{"Error"}</Text>*/}
+                        <TouchOpacityButton style={styles.submit_button} onPress={_onLogin}>
                             <Text style={{...FONT.normal, color: 'white'}}>Đăng nhập</Text>
                         </TouchOpacityButton>
                     </View>
@@ -66,7 +97,10 @@ const styles = StyleSheet.create({
         height: 35,
         borderColor: 'gray',
         marginTop: 10,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        ...FONT.normal,
+        paddingLeft: 10,
+        fontSize: 12
     },
     label: {
         ...FONT.normal,

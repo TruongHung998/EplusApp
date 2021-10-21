@@ -75,4 +75,8 @@ export const ICON_NAME = {
         isImage: true,
         icon_name: require("../assets/images/icon/bookmark_icon.png")
     },
+    EPLUS_ICON: {
+        isImage: true,
+        icon_name: require("../assets/background/splashIcon.png")
+    },
 }
