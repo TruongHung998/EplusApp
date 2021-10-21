@@ -21,7 +21,6 @@ export const requestApi = (api, header = {}, url, body) => {
         const state = store.getState();
         const _accessToken = selectAccessToken(state)
         const _refreshToken = selectRefreshToken(state)
-        console.log(_accessToken, 'hung')
         if (header == null)
             if (_accessToken) {
                 header = {
